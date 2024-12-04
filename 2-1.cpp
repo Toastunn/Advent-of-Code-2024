@@ -51,7 +51,7 @@ int main() {
     }
   }
   
-  cout << safeReports; //0??
+  cout << safeReports;
 
   FileToRead.close();
   return 0;

@@ -28,7 +28,27 @@ int main() {
 
   //read each newLine of the file
   while (getline(FileToRead, newLine)) {
-    cout << "b";
+    report = splice_str(newLine, "1234567890");
+    bool previousIncreasing;
+
+    for (int i = 0; i < report.size(); i++) {
+      bool localIncreasing;
+
+      if(report[i+1] > report[i]) localIncreasing = true;
+      else if (report[i+1] < report[i]) localIncreasing = false;
+      else break;
+
+      if(previousIncreasing != localIncreasing && i != 0) break;
+
+      previousIncreasing = localIncreasing;
+
+      int difference = abs(report[i] - report[i+1]);
+      if(difference > 3 || difference < 1) break;
+
+      if(i+1 == report.size()-1) {
+        safeReports++;
+      }
+    }
   }
   
   cout << safeReports; //0??
